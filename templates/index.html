@@ -15,6 +15,32 @@
   <body>
     <h1>Brain Tumor Detector</h1>
 
+    <h2>Image Upload</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <div class="">
+        <label for="fileUpload" class="">Upload a brain tumor image</label>
+        <input type="file" class="" id="fileUpload" name="fileUpload" />
+      </div>
+      <button type="submit" class="">Predict</button>
+    </form>
+
+    {% if result %}
+    <h2>Prediction</h2>
+    <img
+      src="data:image/jpeg;base64,{{ result.image }}"
+      class=""
+      alt="result"
+    />
+    <p class="">
+      The result is:
+      <span class="result-text">{{ result.tumor_name }}</span>
+    </p>
+    <p class="">
+      The confidence is:
+      <span class="result-text">{{ result.confidence }}</span>
+    </p>
+    {% endif %}
+
     <!-- Custom JS -->
     <script
       type="text/javascript"
